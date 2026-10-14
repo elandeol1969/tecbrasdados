@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecBras - Projeto de Soberania e Independência Digital do Brasil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        scarlet: {
+                            50: '#fff1f1',
+                            100: '#ffe1e1',
+                            200: '#ffc7c7',
+                            300: '#ffa0a0',
+                            400: '#ff6969',
+                            500: '#f83b3b',
+                            600: '#dc143c', /* Crimson Scarlet */
+                            700: '#b22222', /* Dark Crimson */
+                            800: '#8b0000', /* Deep Scarlet */
+                            900: '#5c0000',
+                            950: '#380000',
+                        },
+                        offwhite: '#F8F9FA',
+                        offwhiteDark: '#E9ECEF',
+                        charcoal: {
+                            800: '#2D2D2D',
+                            900: '#1A1A1A',
+                            950: '#0F0F0F'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #F8F9FA;
+            color: #1A1A1A;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F8F9FA;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #B22222;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8B0000;
+        }
+
+        .glass-header {
+            background: rgba(248, 249, 250, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .hero-bg-pattern {
+            background-color: #F8F9FA;
+            background-image: radial-gradient(#8b0000 0.55px, transparent 0.55px), radial-gradient(#8b0000 0.55px, #F8F9FA 0.55px);
+            background-size: 22px 22px;
+            background-position: 0 0, 11px 11px;
+            opacity: 0.95;
+        }
+
+        .glow-scarlet {
+            box-shadow: 0 10px 30px -10px rgba(178, 34, 34, 0.3);
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px -10px rgba(139, 0, 0, 0.15);
+        }
+
+        .legal-code-block {
+            background-color: #1A1A1A;
+            color: #F8F9FA;
+            border-left: 4px solid #DC143C;
+        }
+
+        /* Estado ativo persistente dos links de navegação */
+        #main-header .nav-link-active {
+            background-color: #FFE1E1;
+            color: #B22222;
+        }
+        #main-header .nav-cta-active {
+            background-color: #8B0000;
+        }
+
+        /* Fonte Roboto exclusiva dos links do menu de navegação */
+        #main-header nav a,
+        #main-header .mobile-nav-link {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="relative antialiased selection:bg-scarlet-600 selection:text-white">
+
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header border-b border-scarlet-100/60 transition-all duration-300" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo TecBras -->
+                <a href="#inicio" class="flex items-center gap-3 group focus:outline-none">
+                    <img src="favicon.png" alt="Logotipo TecBras" class="w-11 h-11 rounded-xl shadow-md group-hover:scale-105 transition-transform duration-300">
+                    <div class="flex flex-col">
+                        <div class="flex items-center gap-1">
+                            <span class="text-2xl font-extrabold tracking-tight text-charcoal-900 font-mono">Tec<span class="text-scarlet-700">Bras</span></span>
+                            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-scarlet-100 text-scarlet-800 border border-scarlet-200">BR</span>
+                        </div>
+                        <span class="text-[10px] tracking-widest text-gray-500 uppercase font-semibold">Soberania Digital</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center space-x-1 xl:space-x-2">
+                    <a href="#inicio" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-scarlet-700 hover:bg-scarlet-50/80 rounded-lg transition-colors">Início</a>
+                    <a href="#cenario" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-scarlet-700 hover:bg-scarlet-50/80 rounded-lg transition-colors">Cenário Atual</a>
+                    <a href="#problema" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-scarlet-700 hover:bg-scarlet-50/80 rounded-lg transition-colors">O Problema</a>
+                    <a href="#proposta" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-scarlet-700 hover:bg-scarlet-50/80 rounded-lg transition-colors">Proposta de Valor</a>
+                    <a href="#publico" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-scarlet-700 hover:bg-scarlet-50/80 rounded-lg transition-colors">Público-Alvo</a>
+                    <a href="#recursos" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-scarlet-700 hover:bg-scarlet-50/80 rounded-lg transition-colors">Recursos</a>
+                    <a href="#anteprojeto" class="ml-2 px-4 py-2 text-sm font-semibold text-white bg-scarlet-700 hover:bg-scarlet-800 rounded-lg shadow-sm hover:shadow transition-all">Anteprojeto de Lei</a>
+                </nav>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" class="inline-flex items-center justify-center p-2.5 rounded-xl text-charcoal-800 hover:text-scarlet-700 hover:bg-scarlet-50 focus:outline-none focus:ring-2 focus:ring-scarlet-600" aria-label="Abrir Menu">
+                        <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                        <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden border-b border-scarlet-100 bg-offwhite/98 backdrop-blur-lg transition-all duration-300">
+            <div class="px-4 pt-3 pb-6 space-y-1 sm:px-3">
+                <a href="#inicio" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-800 hover:bg-scarlet-50 hover:text-scarlet-700">Início</a>
+                <a href="#cenario" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-800 hover:bg-scarlet-50 hover:text-scarlet-700">Cenário Atual</a>
+                <a href="#problema" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-800 hover:bg-scarlet-50 hover:text-scarlet-700">O Problema</a>
+                <a href="#proposta" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-800 hover:bg-scarlet-50 hover:text-scarlet-700">Proposta de Valor</a>
+                <a href="#publico" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-800 hover:bg-scarlet-50 hover:text-scarlet-700">Público-Alvo</a>
+                <a href="#recursos" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-800 hover:bg-scarlet-50 hover:text-scarlet-700">Recursos e Orçamento</a>
+                <a href="#anteprojeto" class="mobile-nav-link block px-3 py-2.5 mt-2 rounded-lg text-base font-semibold bg-scarlet-700 text-white text-center shadow">Anteprojeto de Lei</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <section id="inicio" class="relative min-h-[90vh] flex items-center justify-center py-12 lg:py-20 overflow-hidden hero-bg-pattern border-b border-scarlet-100">
+            
+            <!-- Hero Layout Container -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Hero Content Left (Text Preambulo) -->
+                    <div class="lg:col-span-12 space-y-6 text-left">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-scarlet-100/90 border border-scarlet-200 text-scarlet-800 text-xs font-bold tracking-wide uppercase shadow-sm">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-scarlet-700"></i>
+                            <span>Projeto Oficial de Soberania Digital Nacional</span>
+                        </div>
+                        
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-charcoal-900 tracking-tight leading-[1.15]">
+                            TecBras: <span class="text-transparent bg-clip-text bg-gradient-to-r from-scarlet-800 via-scarlet-700 to-scarlet-600">Soberania, Segurança e Independência Digital</span> para o Brasil
+                        </h1>
+
+                        <!-- PREÂMBULO EXATO CONFORME SOLICITADO -->
+                        <div class="p-5 sm:p-6 rounded-2xl bg-white/90 backdrop-blur border border-scarlet-100 shadow-sm text-gray-700 text-base sm:text-lg leading-relaxed space-y-3">
+                            <p class="font-semibold text-scarlet-900 text-xs uppercase tracking-wider mb-1 flex items-center gap-2">
+                                <i data-lucide="file-text" class="w-4 h-4 text-scarlet-700"></i> Preâmbulo do Projeto
+                            </p>
+                            <p>
+                                A transformação digital acelerada reconfigurou as dinâmicas sociais, econômicas e políticas contemporâneas, convertendo a infraestrutura de dados e os canais digitais de comunicação em ativos estratégicos indispensáveis para a soberania de qualquer nação. No contexto brasileiro, contudo, essa expansão ocorreu de forma assimétrica, resultando em uma severa dependência tecnológica perante megacorporações transnacionais — as <em>Big Techs</em>.
+                            </p>
+                            <p>
+                                Esta proposta de projeto aborda os impactos dessa vulnerabilidade sobre a segurança dos dados pessoais dos cidadãos, a autonomia das instituições públicas e a própria integridade do debate democrático, com base no ordenamento jurídico pátrio e nos ditames da Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018). Diante de riscos contínuos de manipulação informacional, extração predatória de dados e submissão a jurisdições estrangeiras, este documento fundamenta e estrutura a criação da <strong>TecBras (Empresa Brasileira de Tecnologia e Mídias Sociais S.A.)</strong>. Concebida como uma Sociedade de Economia Mista sob controle estatal e com forte articulação ao ecossistema nacional de tecnologia, a TecBras surge como uma solução robusta e viável para restituir a autodeterminação informativa ao Brasil, assegurar a cidadania digital e prover uma alternativa pública, transparente e soberana para os cidadãos e instituições brasileiras.
+                            </p>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                            <a href="#proposta" class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-bold text-white bg-scarlet-700 hover:bg-scarlet-800 transition-all shadow-lg glow-scarlet text-base group">
+                                <span>Explorar a Proposta TecBras</span>
+                                <i data-lucide="arrow-right" class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                            <a href="#anteprojeto" class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-bold text-charcoal-900 bg-white hover:bg-gray-100 border border-gray-300 transition-all text-base shadow-sm">
+                                <i data-lucide="file-code" class="w-5 h-5 mr-2 text-scarlet-700"></i>
+                                <span>Ver Anteprojeto de Lei</span>
+                            </a>
+                            <a href="textoProjeto.pdf" download="textoProjeto.pdf" class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-bold text-scarlet-700 bg-scarlet-50 hover:bg-scarlet-100 border border-scarlet-200 transition-all text-base shadow-sm">
+                                <i data-lucide="download" class="w-5 h-5 mr-2"></i>
+                                <span>Baixar Texto do Projeto (PDF)</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="cenario" class="py-16 sm:py-24 bg-white border-b border-scarlet-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- SVG Illustration Section 1 -->
+                    <div class="lg:col-span-5 order-2 lg:order-1 flex justify-center">
+                        <div class="w-full max-w-md p-6 bg-offwhite rounded-3xl border border-scarlet-100 shadow-lg">
+                            <svg class="w-full h-auto" viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="320" rx="20" fill="#F8F9FA"/>
+                                <!-- Server Racks Overseas -->
+                                <rect x="40" y="50" width="140" height="220" rx="12" fill="#2D2D2D"/>
+                                <line x1="60" y1="90" x2="160" y2="90" stroke="#FF6969" stroke-width="4" stroke-linecap="round"/>
+                                <line x1="60" y1="130" x2="160" y2="130" stroke="#FF6969" stroke-width="4" stroke-linecap="round"/>
+                                <line x1="60" y1="170" x2="160" y2="170" stroke="#FF6969" stroke-width="4" stroke-linecap="round"/>
+                                <circle cx="150" cy="90" r="4" fill="#DC143C"/>
+                                <circle cx="150" cy="130" r="4" fill="#DC143C"/>
+                                <circle cx="150" cy="170" r="4" fill="#DC143C"/>
+
+                                <!-- Flow Arrow Data Extracted -->
+                                <path d="M200 160 H320" stroke="#B22222" stroke-width="3" stroke-dasharray="6 6"/>
+                                <path d="M310 150 L325 160 L310 170" fill="#B22222"/>
+
+                                <!-- Overseas Cloud Flag USA/EU -->
+                                <path d="M260 70 C260 50 280 40 300 40 C320 40 340 50 350 70 C365 70 375 85 375 100 C375 115 365 130 350 130 H260 C245 130 235 115 235 100 C235 85 245 70 260 70 Z" fill="#FFE1E1" stroke="#B22222" stroke-width="2"/>
+                                <text x="270" y="95" font-family="Plus Jakarta Sans" font-size="12" font-weight="bold" fill="#8B0000">US Cloud Act</text>
+
+                                <!-- Warning Tag -->
+                                <rect x="240" y="220" width="120" height="40" rx="8" fill="#8B0000"/>
+                                <text x="255" y="245" font-family="Plus Jakarta Sans" font-size="11" font-weight="bold" fill="#FFFFFF">Dependência 100%</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Text Content Section 1 -->
+                    <div class="lg:col-span-7 order-1 lg:order-2 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-scarlet-100 text-scarlet-800 text-xs font-bold uppercase">
+                            <span>01. Diagnóstico Estrutural</span>
+                        </div>
+                        <h2 class="text-3xl font-extrabold text-charcoal-900 tracking-tight">1. Cenário Atual</h2>
+                        <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                            O ecossistema digital brasileiro encontra-se em um estado de profunda dependência estrutural em relação às grandes corporações multinacionais de tecnologia — as chamadas "Big Techs", concentradas predominantemente nos Estados Unidos e na União Europeia.
+                        </p>
+                        <p class="text-gray-700 text-base leading-relaxed">
+                            Plataformas de redes sociais, serviços de mensageria instantânea, motores de busca, infraestrutura de nuvem e ferramentas de inteligência artificial generativa (como as desenvolvidas por <strong>Meta, Alphabet/Google, OpenAI, Anthropic, xAI, Microsoft e Amazon</strong>) operam como a infraestrutura primária de comunicação, debate público e transações econômicas do Brasil.
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+                            <div class="p-4 rounded-xl bg-offwhite border border-gray-200">
+                                <i data-lucide="server-off" class="w-6 h-6 text-scarlet-700 mb-2"></i>
+                                <h3 class="font-bold text-charcoal-900 text-sm">Infraestrutura Estrangeira</h3>
+                                <p class="text-xs text-gray-600 mt-1 leading-relaxed">Dados pessoais de cidadãos brasileiros hospedados em servidores fora do território nacional.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-offwhite border border-gray-200">
+                                <i data-lucide="scale" class="w-6 h-6 text-scarlet-700 mb-2"></i>
+                                <h3 class="font-bold text-charcoal-900 text-sm">Jurisdição Alienígena</h3>
+                                <p class="text-xs text-gray-600 mt-1 leading-relaxed">Informações sensíveis sujeitas a legislações estrangeiras, como o US Cloud Act.</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-offwhite border border-gray-200">
+                                <i data-lucide="bot" class="w-6 h-6 text-scarlet-700 mb-2"></i>
+                                <h3 class="font-bold text-charcoal-900 text-sm">Dependência de IA</h3>
+                                <p class="text-xs text-gray-600 mt-1 leading-relaxed">Ferramentas de IA generativa que moldam o debate público sob controle transnacional.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="problema" class="py-16 sm:py-24 bg-offwhite border-b border-scarlet-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div class="max-w-3xl space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-scarlet-100 text-scarlet-800 text-xs font-bold uppercase">
+                        <span>02. Vulnerabilidade Nacional</span>
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-charcoal-900 tracking-tight">2. O Problema</h2>
+                    <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                        A dependência tecnológica perante as Big Techs gera impactos diretos e contínuos sobre três pilares fundamentais da soberania brasileira:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+                    <div class="p-6 rounded-2xl bg-white border border-scarlet-100 shadow-sm card-hover">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-scarlet-100 mb-4">
+                            <i data-lucide="shield-alert" class="w-6 h-6 text-scarlet-700"></i>
+                        </div>
+                        <h3 class="font-bold text-charcoal-900 text-lg mb-2">Segurança dos Dados Pessoais</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Extração predatória e tratamento de dados de milhões de cidadãos sem controle efetivo do Estado, em descompasso com os ditames da LGPD (Lei nº 13.709/2018).
+                        </p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white border border-scarlet-100 shadow-sm card-hover">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-scarlet-100 mb-4">
+                            <i data-lucide="landmark" class="w-6 h-6 text-scarlet-700"></i>
+                        </div>
+                        <h3 class="font-bold text-charcoal-900 text-lg mb-2">Autonomia das Instituições</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Órgãos públicos dependentes de plataformas privadas estrangeiras para comunicação oficial, armazenamento e operação de serviços essenciais.
+                        </p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white border border-scarlet-100 shadow-sm card-hover">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-scarlet-100 mb-4">
+                            <i data-lucide="message-square-warning" class="w-6 h-6 text-scarlet-700"></i>
+                        </div>
+                        <h3 class="font-bold text-charcoal-900 text-lg mb-2">Integridade do Debate Democrático</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Riscos contínuos de manipulação informacional e moderação opaca de conteúdo, definida sob interesses e jurisdições estrangeiras.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="proposta" class="py-16 sm:py-24 bg-white border-b border-scarlet-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div class="max-w-3xl space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-scarlet-100 text-scarlet-800 text-xs font-bold uppercase">
+                        <span>03. Solução Estruturante</span>
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-charcoal-900 tracking-tight">3. Proposta de Valor</h2>
+                    <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                        Criação da <strong>TecBras (Empresa Brasileira de Tecnologia e Mídias Sociais S.A.)</strong>, uma Sociedade de Economia Mista sob controle estatal, com forte articulação ao ecossistema nacional de tecnologia, para prover uma alternativa pública, transparente e soberana.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+                    <div class="p-6 rounded-2xl bg-offwhite border border-gray-200 card-hover">
+                        <i data-lucide="cloud" class="w-8 h-8 text-scarlet-700 mb-3"></i>
+                        <h3 class="font-bold text-charcoal-900 mb-1">Nuvem Soberana</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">Infraestrutura de dados em território nacional, em articulação com SERPRO e DATAPREV.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-offwhite border border-gray-200 card-hover">
+                        <i data-lucide="users" class="w-8 h-8 text-scarlet-700 mb-3"></i>
+                        <h3 class="font-bold text-charcoal-900 mb-1">Rede Social Pública</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">Plataforma de participação cidadã com moderação transparente e auditável.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-offwhite border border-gray-200 card-hover">
+                        <i data-lucide="lock" class="w-8 h-8 text-scarlet-700 mb-3"></i>
+                        <h3 class="font-bold text-charcoal-900 mb-1">Mensageria Segura</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">Comunicação criptografada para cidadãos e instituições públicas brasileiras.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-offwhite border border-gray-200 card-hover">
+                        <i data-lucide="cpu" class="w-8 h-8 text-scarlet-700 mb-3"></i>
+                        <h3 class="font-bold text-charcoal-900 mb-1">IA Nacional</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">Desenvolvimento de modelos de inteligência artificial alinhados ao interesse público.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="publico" class="py-16 sm:py-24 bg-offwhite border-b border-scarlet-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div class="max-w-3xl space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-scarlet-100 text-scarlet-800 text-xs font-bold uppercase">
+                        <span>04. Beneficiários</span>
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-charcoal-900 tracking-tight">4. Público-Alvo</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+                    <div class="p-6 rounded-2xl bg-white border border-scarlet-100 shadow-sm card-hover">
+                        <i data-lucide="user-check" class="w-8 h-8 text-scarlet-700 mb-3"></i>
+                        <h3 class="font-bold text-charcoal-900 text-lg mb-2">Cidadãos Brasileiros</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">Proteção efetiva dos dados pessoais e garantia da cidadania digital em plataformas sob jurisdição nacional.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white border border-scarlet-100 shadow-sm card-hover">
+                        <i data-lucide="building-2" class="w-8 h-8 text-scarlet-700 mb-3"></i>
+                        <h3 class="font-bold text-charcoal-900 text-lg mb-2">Instituições Públicas</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">Infraestrutura soberana de comunicação e dados para órgãos da administração direta e indireta.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-white border border-scarlet-100 shadow-sm card-hover">
+                        <i data-lucide="briefcase" class="w-8 h-8 text-scarlet-700 mb-3"></i>
+                        <h3 class="font-bold text-charcoal-900 text-lg mb-2">Ecossistema de Tecnologia</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">Empresas, startups e universidades nacionais articuladas em torno de uma cadeia produtiva digital soberana.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="recursos" class="py-16 sm:py-24 bg-white border-b border-scarlet-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div class="max-w-3xl space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-scarlet-100 text-scarlet-800 text-xs font-bold uppercase">
+                        <span>05. Viabilidade</span>
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-charcoal-900 tracking-tight">5. Recursos e Orçamento</h2>
+                    <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                        A estruturação da TecBras apoia-se em capacidade estatal já existente e em fontes de financiamento previstas no ordenamento jurídico pátrio.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+                    <div class="p-6 rounded-2xl bg-offwhite border border-gray-200 card-hover">
+                        <i data-lucide="database" class="w-8 h-8 text-scarlet-700 mb-3"></i>
+                        <h3 class="font-bold text-charcoal-900 mb-1">Infraestrutura Existente</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">Aproveitamento da capacidade de datacenters de SERPRO e DATAPREV.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-offwhite border border-gray-200 card-hover">
+                        <i data-lucide="wallet" class="w-8 h-8 text-scarlet-700 mb-3"></i>
+                        <h3 class="font-bold text-charcoal-900 mb-1">Fundos Setoriais</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">Financiamentos (BNDES, FINEP/FNDCT) e aporte de fundos de telecomunicações e de universalização (FUST/FISTEL).</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-offwhite border border-gray-200 card-hover">
+                        <i data-lucide="handshake" class="w-8 h-8 text-scarlet-700 mb-3"></i>
+                        <h3 class="font-bold text-charcoal-900 mb-1">Capital Misto</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">Participação minoritária de capital privado nacional, com controle acionário estatal.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-offwhite border border-gray-200 card-hover">
+                        <i data-lucide="graduation-cap" class="w-8 h-8 text-scarlet-700 mb-3"></i>
+                        <h3 class="font-bold text-charcoal-900 mb-1">P&amp;D Nacional</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">Parcerias com universidades e institutos de pesquisa para desenvolvimento tecnológico.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="anteprojeto" class="py-16 sm:py-24 bg-offwhite border-b border-scarlet-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div class="max-w-3xl space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-scarlet-100 text-scarlet-800 text-xs font-bold uppercase">
+                        <span>06. Fundamentação Jurídica</span>
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-charcoal-900 tracking-tight">6. Anteprojeto de Lei</h2>
+                    <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                        Síntese da proposta legislativa para instituição da TecBras, nos termos do ordenamento jurídico pátrio e da legislação de estatais (Lei nº 13.303/2016).
+                    </p>
+                </div>
+
+                <div class="legal-code-block rounded-2xl p-6 sm:p-8 mt-10 font-mono text-sm leading-relaxed shadow-xl overflow-x-auto">
+                    <p class="text-scarlet-400 font-bold mb-4">// ANTEPROJETO DE LEI — RESUMO ESTRUTURADO</p>
+                    <p class="mb-3"><span class="text-scarlet-400">Art. 1º</span> — Fica autorizada a constituição da Empresa Brasileira de Tecnologia e Mídias Sociais S.A. (TecBras), sociedade de economia mista, vinculada ao Poder Executivo Federal.</p>
+                    <p class="mb-3"><span class="text-scarlet-400">Art. 2º</span> — A TecBras terá por objeto social o desenvolvimento e a operação de infraestrutura digital soberana, incluindo computação em nuvem, plataformas de mídia social, mensageria segura e inteligência artificial de interesse público.</p>
+                    <p class="mb-3"><span class="text-scarlet-400">Art. 3º</span> — A União deterá, obrigatoriamente, a maioria do capital votante da TecBras, nos termos da Lei nº 13.303/2016 (Lei das Estatais).</p>
+                    <p class="mb-3"><span class="text-scarlet-400">Art. 4º</span> — O tratamento de dados pessoais pela TecBras observará, em caráter estrito, a Lei nº 13.709/2018 (LGPD), com armazenamento prioritário em território nacional.</p>
+                    <p><span class="text-scarlet-400">Art. 5º</span> — A governança da TecBras contará com conselhos de administração e fiscal, com participação da sociedade civil e do ecossistema nacional de tecnologia, assegurados transparência e controle social.</p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 pt-8">
+                    <a href="#inicio" class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-bold text-white bg-scarlet-700 hover:bg-scarlet-800 transition-all shadow-lg glow-scarlet text-base">
+                        <i data-lucide="arrow-up" class="w-5 h-5 mr-2"></i>
+                        <span>Voltar ao Início</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-charcoal-900 text-gray-300 py-10 border-t border-scarlet-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="text-xl font-extrabold tracking-tight text-white font-mono">Tec<span class="text-scarlet-400">Bras</span></span>
+                <span class="text-xs text-gray-400">— Soberania, Segurança e Independência Digital</span>
+            </div>
+            <p class="text-xs text-gray-500">Projeto de proposta pública · Conteúdo meramente propositivo · Brasil</p>
+        </div>
+    </footer>
+
+    <script>
+        // Inicializa os ícones Lucide
+        lucide.createIcons();
+
+        // Toggle do menu mobile
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isOpen = !mobileMenu.classList.contains('hidden');
+            mobileMenu.classList.toggle('hidden', isOpen);
+            menuIcon.classList.toggle('hidden', !isOpen);
+            closeIcon.classList.toggle('hidden', isOpen);
+        });
+
+        // Fecha o menu ao clicar em um link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            });
+        });
+
+        // Mantém o link de navegação clicado com o fundo ativo
+        const navLinks = document.querySelectorAll('#main-header nav a, #main-header .mobile-nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.forEach(l => l.classList.remove('nav-link-active', 'nav-cta-active'));
+                link.classList.add(link.classList.contains('bg-scarlet-700') ? 'nav-cta-active' : 'nav-link-active');
+            });
+        });
+    </script>
+</body>
+</html>
