@@ -54,6 +54,28 @@
             overflow-x: hidden;
         }
 
+        p {
+            font-size: 0.8125rem;
+        }
+
+        p.text-xs {
+            font-size: 0.6875rem;
+        }
+
+        p.text-sm {
+            font-size: 0.8125rem;
+        }
+
+        p.text-base {
+            font-size: 0.875rem;
+        }
+
+        @media (min-width: 640px) {
+            p.sm\:text-lg {
+                font-size: 1rem;
+            }
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -181,23 +203,23 @@
                     <div class="lg:col-span-12 space-y-6 text-left">
                         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-scarlet-100/90 border border-scarlet-200 text-scarlet-800 text-xs font-bold tracking-wide uppercase shadow-sm">
                             <i data-lucide="shield-check" class="w-4 h-4 text-scarlet-700"></i>
-                            <span>Projeto Oficial de Soberania Digital Nacional</span>
+                            <span>Projeto de Soberania Digital Nacional</span>
                         </div>
                         
-                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-charcoal-900 tracking-tight leading-[1.15]">
+                        <h1 class="text-3xl sm:text-3xl lg:text-5xl font-bold text-charcoal-600 tracking-tight leading-[1.15]">
                             TecBras: <span class="text-transparent bg-clip-text bg-gradient-to-r from-scarlet-800 via-scarlet-700 to-scarlet-600">Soberania, Segurança e Independência Digital</span> para o Brasil
                         </h1>
 
-                        <!-- PREÂMBULO EXATO CONFORME SOLICITADO -->
+                        <!-- SUMÁRIO EXATO CONFORME SOLICITADO -->
                         <div class="p-5 sm:p-6 rounded-2xl bg-white/90 backdrop-blur border border-scarlet-100 shadow-sm text-gray-700 text-base sm:text-lg leading-relaxed space-y-3">
                             <p class="font-semibold text-scarlet-900 text-xs uppercase tracking-wider mb-1 flex items-center gap-2">
-                                <i data-lucide="file-text" class="w-4 h-4 text-scarlet-700"></i> Preâmbulo do Projeto
+                                <i data-lucide="file-text" class="w-4 h-4 text-scarlet-700"></i> Sumário do Projeto
                             </p>
                             <p>
-                                A transformação digital acelerada reconfigurou as dinâmicas sociais, econômicas e políticas contemporâneas, convertendo a infraestrutura de dados e os canais digitais de comunicação em ativos estratégicos indispensáveis para a soberania de qualquer nação. No contexto brasileiro, contudo, essa expansão ocorreu de forma assimétrica, resultando em uma severa dependência tecnológica perante megacorporações transnacionais — as <em>Big Techs</em>.
+                                A transformação digital acelerada reconfigurou as dinâmicas sociais, econômicas e políticas contemporâneas, convertendo a infraestrutura de dados e os canais digitais de comunicação em ativos estratégicos indispensáveis à soberania de qualquer nação. No contexto brasileiro, essa expansão ocorreu de forma assimétrica, resultando em severa dependência tecnológica perante megacorporações transnacionais — as <em>Big Techs</em>.
                             </p>
                             <p>
-                                Esta proposta de projeto aborda os impactos dessa vulnerabilidade sobre a segurança dos dados pessoais dos cidadãos, a autonomia das instituições públicas e a própria integridade do debate democrático, com base no ordenamento jurídico pátrio e nos ditames da Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018). Diante de riscos contínuos de manipulação informacional, extração predatória de dados e submissão a jurisdições estrangeiras, este documento fundamenta e estrutura a criação da <strong>TecBras (Empresa Brasileira de Tecnologia e Mídias Sociais S.A.)</strong>. Concebida como uma Sociedade de Economia Mista sob controle estatal e com forte articulação ao ecossistema nacional de tecnologia, a TecBras surge como uma solução robusta e viável para restituir a autodeterminação informativa ao Brasil, assegurar a cidadania digital e prover uma alternativa pública, transparente e soberana para os cidadãos e instituições brasileiras.
+                                Esta proposta de projeto aborda os impactos dessa vulnerabilidade sobre a segurança dos dados pessoais dos cidadãos, a autonomia das instituições públicas e a integridade do debate democrático. Diante de riscos contínuos de manipulação informacional, extração predatória de dados e submissão a jurisdições estrangeiras, este projeto fundamenta e estrutura a criação da <strong>TecBras (Empresa Brasileira de Tecnologia, Mídias Sociais e Soluções Digitais S.A.)</strong>. Concebida como uma Sociedade de Economia Mista sob controle estatal e com forte articulação ao ecossistema nacional de tecnologia, a TecBras surge como uma solução robusta e viável para restituir a autodeterminação informativa ao Brasil, assegurar a cidadania digital e servir como alternativa pública, transparente e soberana para os cidadãos e instituições brasileiras.
                             </p>
                         </div>
 
@@ -347,7 +369,7 @@
                     </div>
                     <h2 class="text-3xl font-extrabold text-charcoal-900 tracking-tight">3. Proposta de Valor</h2>
                     <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
-                        Criação da <strong>TecBras (Empresa Brasileira de Tecnologia e Mídias Sociais S.A.)</strong>, uma Sociedade de Economia Mista sob controle estatal, com forte articulação ao ecossistema nacional de tecnologia, para prover uma alternativa pública, transparente e soberana.
+                        Criação da <strong>TecBras (Empresa Brasileira de Tecnologia, Mídias Sociais e Soluções Digitais S.A.)</strong>, uma Sociedade de Economia Mista sob controle estatal, com forte articulação ao ecossistema nacional de tecnologia, para prover uma alternativa pública, transparente e soberana.
                     </p>
                 </div>
 
@@ -395,8 +417,8 @@
                     </div>
                     <div class="p-6 rounded-2xl bg-white border border-scarlet-100 shadow-sm card-hover">
                         <i data-lucide="building-2" class="w-8 h-8 text-scarlet-700 mb-3"></i>
-                        <h3 class="font-bold text-charcoal-900 text-lg mb-2">Instituições Públicas</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">Infraestrutura soberana de comunicação e dados para órgãos da administração direta e indireta.</p>
+                        <h3 class="font-bold text-charcoal-900 text-lg mb-2">Instituições Privadas e Públicas</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">Infraestrutura soberana de comunicação e dados para instituições privadas e públicas, incluindo órgãos da administração direta e indireta.</p>
                     </div>
                     <div class="p-6 rounded-2xl bg-white border border-scarlet-100 shadow-sm card-hover">
                         <i data-lucide="briefcase" class="w-8 h-8 text-scarlet-700 mb-3"></i>
@@ -417,7 +439,7 @@
                     </div>
                     <h2 class="text-3xl font-extrabold text-charcoal-900 tracking-tight">5. Recursos e Orçamento</h2>
                     <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
-                        A estruturação da TecBras apoia-se em capacidade estatal já existente e em fontes de financiamento previstas no ordenamento jurídico pátrio.
+                        A estruturação da TecBras apoia-se em capacidade estatal já existente e em fontes de financiamento previstas no ordenamento jurídico brasileiro.
                     </p>
                 </div>
 
@@ -430,7 +452,7 @@
                     <div class="p-6 rounded-2xl bg-offwhite border border-gray-200 card-hover">
                         <i data-lucide="wallet" class="w-8 h-8 text-scarlet-700 mb-3"></i>
                         <h3 class="font-bold text-charcoal-900 mb-1">Fundos Setoriais</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">Financiamentos (BNDES, FINEP/FNDCT) e aporte de fundos de telecomunicações e de universalização (FUST/FISTEL).</p>
+                        <p class="text-sm text-gray-600 leading-relaxed">Financiamentos (BNDES, FINEP/FNDCT) e aporte de fundos de universalização de desenvolvimento de telecomunicações (Fust e Finntel) entre outros.</p>
                     </div>
                     <div class="p-6 rounded-2xl bg-offwhite border border-gray-200 card-hover">
                         <i data-lucide="handshake" class="w-8 h-8 text-scarlet-700 mb-3"></i>
@@ -456,13 +478,13 @@
                     </div>
                     <h2 class="text-3xl font-extrabold text-charcoal-900 tracking-tight">6. Anteprojeto de Lei</h2>
                     <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
-                        Síntese da proposta legislativa para instituição da TecBras, nos termos do ordenamento jurídico pátrio e da legislação de estatais (Lei nº 13.303/2016).
+                        Síntese da proposta legislativa para instituição da TecBras, nos termos do ordenamento jurídico brasileiro e da legislação de estatais (Lei nº 13.303/2016).
                     </p>
                 </div>
 
                 <div class="legal-code-block rounded-2xl p-6 sm:p-8 mt-10 font-mono text-sm leading-relaxed shadow-xl overflow-x-auto">
                     <p class="text-scarlet-400 font-bold mb-4">// ANTEPROJETO DE LEI — RESUMO ESTRUTURADO</p>
-                    <p class="mb-3"><span class="text-scarlet-400">Art. 1º</span> — Fica autorizada a constituição da Empresa Brasileira de Tecnologia e Mídias Sociais S.A. (TecBras), sociedade de economia mista, vinculada ao Poder Executivo Federal.</p>
+                    <p class="mb-3"><span class="text-scarlet-400">Art. 1º</span> — Fica autorizada a constituição da Empresa Brasileira de Tecnologia, Mídias Sociais e Soluções Digitais S.A. (TecBras), sociedade de economia mista, vinculada ao Poder Executivo Federal.</p>
                     <p class="mb-3"><span class="text-scarlet-400">Art. 2º</span> — A TecBras terá por objeto social o desenvolvimento e a operação de infraestrutura digital soberana, incluindo computação em nuvem, plataformas de mídia social, mensageria segura e inteligência artificial de interesse público.</p>
                     <p class="mb-3"><span class="text-scarlet-400">Art. 3º</span> — A União deterá, obrigatoriamente, a maioria do capital votante da TecBras, nos termos da Lei nº 13.303/2016 (Lei das Estatais).</p>
                     <p class="mb-3"><span class="text-scarlet-400">Art. 4º</span> — O tratamento de dados pessoais pela TecBras observará, em caráter estrito, a Lei nº 13.709/2018 (LGPD), com armazenamento prioritário em território nacional.</p>
